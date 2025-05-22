@@ -1,0 +1,11 @@
+nohup: 입력 무시
+Traceback (most recent call last):
+  File "run_with_ngrok.py", line 2, in <module>
+    import uvicorn
+  File "/home/jovyan/.venv/tf2.5.0-keras2.4.3-py3.8-cuda11.3/lib/python3.8/site-packages/uvicorn/__init__.py", line 1, in <module>
+    from uvicorn.config import Config
+  File "/home/jovyan/.venv/tf2.5.0-keras2.4.3-py3.8-cuda11.3/lib/python3.8/site-packages/uvicorn/config.py", line 18, in <module>
+    from uvicorn._types import ASGIApplication
+  File "/home/jovyan/.venv/tf2.5.0-keras2.4.3-py3.8-cuda11.3/lib/python3.8/site-packages/uvicorn/_types.py", line 53, in <module>
+    from typing_extensions import NotRequired
+ImportError: cannot import name 'NotRequired' from 'typing_extensions' (/home/jovyan/.venv/tf2.5.0-keras2.4.3-py3.8-cuda11.3/lib/python3.8/site-packages/typing_extensions.py)
