@@ -1,6 +1,15 @@
 import os
 import shutil
 import time
+
+# 반드시 최상단에서 import
+import sentence_transformers
+
+import sqlite3
+import sys
+sys.modules['sqlite3'] = sqlite3
+sys.modules['sqlite3.dbapi2'] = sqlite3
+
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_community.vectorstores import Chroma
@@ -89,7 +98,6 @@ class RagService:
             # 원본 모델 링크 생성 (원본 모델이 로컬에 있는 경우)
             original_model_path = os.path.join(config.MODELS_DIR, model_name)
             if os.path.exists(original_model_path):
-                # 모델 파일만 복사/링크하고 벡터 스토어는 복사하지 않음
                 model_files_dir = os.path.join(original_model_path, "model_files")
                 if os.path.exists(model_files_dir):
                     target_model_files_dir = os.path.join(model_dir, "model_files")
@@ -105,5 +113,4 @@ class RagService:
             # 오류 상태 업데이트
             error_message = str(e)
             self._set_status(new_model_name, "failed", 0, f"오류: {error_message}")
-            
             return {"status": "error", "message": error_message}
